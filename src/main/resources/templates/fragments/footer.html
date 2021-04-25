@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/miStyle.css}">
+</head>
+<body>
+	<footer th:fragment="miFooter" class="footer text-center mt-4 bg-dark text-light">
+		<div class="container">
+			<p class="mb-0">Powered By Thymeleaf
+			<img id="thLogo" width="30" height="30" alt="thymeleaf logo" th:src="@{/img/thymelaf.png}"/>
+			</p>
+			<a th:href="@{~/http://www.thymeleaf.org}" class="linksFooter">www.thymeleaf.org</a>
+		</div>
+	</footer>
+</body>
+</html>

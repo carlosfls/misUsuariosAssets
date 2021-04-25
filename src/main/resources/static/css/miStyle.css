@@ -1,0 +1,58 @@
+.masthead {
+  min-height: 25rem;
+  position: relative;
+  display: table;
+  width: 100%;
+  height: auto;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../img/bg-masthead.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#btn-enter{
+	box-shadow:5px 5px 2px black;
+	border-radius:15px;
+	font-size:1.5em;
+}
+
+.masthead h1 {
+  font-size: 4rem;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 992px) {
+  .masthead {
+    height: 50vh;
+  }
+  .masthead h1 {
+    font-size: 2.5rem;
+  }
+}
+
+footer.footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p{
+	font-size: 1.5em;
+}
+
+#thLogo{
+	border-radius:20px;
+}
+#navIndex{
+	font-size: 1.2em;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymelaf.org">
+<head th:replace="fragments/head :: miHead"></head>
+<body>
+	<nav th:replace="fragments/nav :: miNav"></nav>
+	<header class="container mt-2">
+		<h2>MIS USUARIOS ASSETS</h2>
+		<hr>
+	</header>
+	<section class="container">
+		<div class="container">
+			<div th:if="${mensaje}" class="alert alert-success">
+				<p th:text="${mensaje}"></p>
+			</div>
+			<div th:if="${mensajeError}" class="alert alert-danger">
+				<p th:text="${mensajeError}"></p>
+			</div>
+		</div>
+		<div class="card mt-5 bg-light">
+			<div class="card-header">
+				<div class="btn-group">
+					<a class="btn btn-md btn-dark" th:href="@{~/empresa/estado/{estado}(estado=true)}">VER	ACTIVOS</a> 
+					<a class="btn btn-md btn-dark" th:href="@{~/empresa/estado/{estado}(estado=false)}">VER INACTIVOS</a>
+					<a class="btn btn-md btn-dark" th:href="@{~/empresa/}">VER TODOS</a>
+				</div>
+			</div>
+			<div class="card-body">
+				<div th:if="${listaUs.isEmpty()}">
+					<p>No hay usuarios registrados</p>
+				</div>
+				<div th:unless="${listaUs.isEmpty()}">
+					<table
+						class="table table-bordered table-hover table-sm text-center">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">ID</th>
+								<th scope="col">DESCRIPCION</th>
+								<th scope="col">USUARIO ASSETS</th>
+								<th scope="col">ACTIVO</th>
+								<th scope="col">ESTADO</th>
+								<th scope="col">RESETEAR</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="us : ${listaUs}">
+								<th scope="row">
+									<a class="btn btn-sm btn-dark text-ligth" th:text="${us.Id_Comercial}" th:href="@{~/empresa/modulos/{idUser}/{acceso}(idUser=${us.usuarioAssets},acceso=all)}"></a>
+								</th>
+								<td th:text="${us.Desc_Comercial}"></td>
+								<td th:text="${us.usuarioAssets}"></td>
+								<td>
+									<p th:if="${us.activo==true}">SI</p>
+									<p th:unless="${us.activo==true}">NO</p>
+								</td>
+								<td><a class="btn btn-sm btn-warning"
+									th:href="@{~/empresa/cambiaEstado/{idUser}/{estado}(idUser=${us.usuarioAssets},estado=${!us.activo})}"
+									th:if="${us.activo==true}">DESACTIVAR</a> <a
+									class="btn btn-sm btn-warning"
+									th:href="@{~/empresa/cambiaEstado/{idUser}/{estado}(idUser=${us.usuarioAssets},estado=${!us.activo})}"
+									th:unless="${us.activo==true}">ACTIVAR</a></td>
+								<td><a class="btn btn-sm btn-warning"
+									onclick="return confirm('Esta seguro?')"
+									th:href="@{~/empresa/resetPassword/} + ${us.usuarioAssets}">RESET
+										PWD</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer th:replace="fragments/footer :: miFooter"></footer>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: miHead">
+</head>
+
+<body class="bg-secondary">
+    <nav th:replace="fragments/nav :: miNav"></nav>
+    <section>
+        <div class="row mx-5 my-5">
+            <div class="card col-12">
+                <div class="card-header">
+                    <h3>Registro</h3>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{~/user/crear/}" th:object="${usuario}" method="POST">
+                        <div class="form-group">
+                            <label for="username">Nombre Usuario</label>
+                            <input class="form-control" id="username" th:field="*{username}" placeholder="nombre...">
+                            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="passowrd..">
+                            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="rol">Tipo Usuario</label>
+                            <select id="rol" th:field="*{rol}" class="form-control">
+                                <option th:each="r : ${roles}" th:value="${r}" th:text="${r}"></option>
+                            </select>  
+                        </div>
+                        <hr>
+                        <input class="btn btn-info" type="submit" value="SALVAR">
+                    </form>
+                </div>
+            </div>
+        </div>    
+    </section>
+    <script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>
