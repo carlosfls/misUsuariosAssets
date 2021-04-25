@@ -19,7 +19,7 @@ public class UsuarioDao {
 	
 	public List<UsuarioAssets>listarUsuariosAssets(){
 		return jdbcTemplate
-			.query("Select distinct Id_Comercial,Desc_Comercial,CI,Id_User,AssetsUser FROM dbo.Empleado where Id_User!='' order by Id_User", new UsuarioAssetsMapper());
+			.query("Select * FROM MCVS_HABANA_USUARIOS_ASSETS order by Id_User", new UsuarioAssetsMapper());
 	}
 	
 	public UsuarioAssets verDetalles(String idUser) {
